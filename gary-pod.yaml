@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gary-gaines
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: gary-gaines
+  template: 
+    metadata:
+      labels:
+        app: gary-gaines
+    spec:
+      containers:
+        - name: gary-gaines
+          image: nginx
+          ports: 
+          - containerPort: 80
+          resources:
+            limits:
+              cpu: 100m
+              memory: 250m
+            requests:
+              cpu: 50m
+              memory: 100m
