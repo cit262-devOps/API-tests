@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: travis-aucoin
+spec: 
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: travis-aucoin
+  template: 
+    metadata: 
+      labels: 
+        app: travis-aucoin
+    spec: 
+      containers: 
+      - name: travis-aucoin
+        image: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 100m
+            memory: 250m
+          requests:
+            cpu: 50m
+            memory: 100m
