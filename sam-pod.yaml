@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sam-kleine
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: sam-kleine
+  template:
+    metadata:
+      labels:
+        app: sam-kleine
+    spec:
+      containers:
+      - name: sam-kleine
+        image: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 100m
+            memory: 250m
+          requests:
+            cpu: 50m
+            memory: 100m 
