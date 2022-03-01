@@ -1,3 +1,4 @@
+# this step builds the container image
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   id: 'Build'
@@ -6,3 +7,13 @@ steps:
   - '.'
   - '-t'
   - 'gcr.io/$PROJECT_ID/team-api-test:latest'
+
+# pushes image to container registry
+# PROJECT_ID and SHORT_SHA variables are automatically replaced by cloud build
+- name: 'gcr.io/cloud-builders/docker'
+  if: push
+  args:
+  - 'push'
+  - 'gcr.io/$PROJECT_ID/team-api-test:latest'
+
+  
