@@ -6,3 +6,10 @@ steps:
   - '.'
   - '-t'
   - 'gcr.io/$PROJECT_ID/team-api-test:latest'
+
+#Push image to container registry
+- name: 'gcr.io/cloud=builders/docker'
+  id: Push
+  args:
+  - 'push'
+  - 'gcr.io/$PROJECT_ID/constellationsweb:latest'
