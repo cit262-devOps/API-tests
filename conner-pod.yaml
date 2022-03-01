@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conner-wadsworth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: conner-wadsworth
+  template:
+    metadata:
+      labels:
+        app: conner-wadsworth
+    spec:
+      containers:
+      - name: conner-wadsworth
+        image: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 100m
+            memory: 250M
+          requests:
+            cpu: 50m
+            memory: 100M
