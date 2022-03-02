@@ -8,10 +8,12 @@ steps:
   - '-t'
   - 'gcr.io/$PROJECT_ID/team-api-test:latest'
 
-# pushes image to container registry
-# PROJECT_ID and SHORT_SHA variables are automatically replaced by cloud build
+
+# This step pushes the image to Container Registry
+# The PROJECT_ID and SHORT_SHA variables are automatically
+# replaced by Cloud Build.
 - name: 'gcr.io/cloud-builders/docker'
-  if: push
+  id: Push
   args:
   - 'push'
   - 'gcr.io/$PROJECT_ID/team-api-test:latest'
