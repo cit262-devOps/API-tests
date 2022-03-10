@@ -1,9 +1,13 @@
-from node:14-alpine
+FROM node:14
 
-WORKDIR /app
-COPY . /app
+WORKDIR /usr/src/app
+
+COPY package*.json ./
 
 RUN npm install
 
-RUN npm run test-dev
-CMD npm run test-dev
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node","server.js"]
